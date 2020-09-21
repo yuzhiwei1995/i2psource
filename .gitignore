@@ -3,7 +3,7 @@
 
 # generated release files
 *.exe
-*.[gx]z
+# *.[gx]z
 *.bz2
 # *.[rwjt]ar
 *.sig
