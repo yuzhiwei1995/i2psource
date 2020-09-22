@@ -209,7 +209,7 @@
                     <label><input type="radio" class="optbox" name="pmode"
                                   value="INTERNAL" <%=reseedHelper.pmodeChecked(4) %> >
                         <%=intl._t("I2P Outproxy")%>
-                    </label>
+                    </label><br>
                     <label><input type="radio" class="optbox" name="pmode"
                                   value="I2PBridge" <%=reseedHelper.pmodeChecked(5) %> >
                         <%=intl._t("I2P Bridge")%>
@@ -242,12 +242,6 @@
 <td><input name="nofilter_spassword" type="password" value="<jsp:getProperty name="reseedHelper" property="nofilter_spassword" />" ></td></tr>
 -->
             <% } // shouldShowHTTPSProxy %>
-
-            <tr>
-                <td align="right"><b><%=intl._t("Bridge Line")%>:</b></td>
-                <td><input name="bridgeline" type="text"
-                           value="<jsp:getProperty name="reseedHelper" property="bridgeline" />"></td>
-            </tr>
 
             <% if (reseedHelper.shouldShowHTTPProxy()) { %>
             <tr>
