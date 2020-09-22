@@ -209,12 +209,13 @@
                     <label><input type="radio" class="optbox" name="pmode"
                                   value="INTERNAL" <%=reseedHelper.pmodeChecked(4) %> >
                         <%=intl._t("I2P Outproxy")%>
-                    </label><br>
+                    </label>
+                    (<%=intl._t("Not for initial reseed. Leave host and port blank.")%>)<br>
                     <label><input type="radio" class="optbox" name="pmode"
                                   value="I2PBridge" <%=reseedHelper.pmodeChecked(5) %> >
                         <%=intl._t("I2P Bridge")%>
                     </label>
-                    (<%=intl._t("Not for initial reseed. Leave host and port blank.")%>)<br>
+                    (<%=intl._t("use for obfs4/obfs3 bridge")%>)<br>
                 </td>
             </tr>
             <tr>
