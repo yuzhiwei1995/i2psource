@@ -231,7 +231,7 @@
 
             <tr>
                 <td align="right"><b><%=intl._t("Bridge Line")%>:</b></td>
-                <td><input name="bridgeline" type="text" size="5" maxlength="5"
+                <td><input name="bridgeline" type="text" maxlength="255"
                            value="<jsp:getProperty name="reseedHelper" property="bridgeline" />"></td>
             </tr>
             <!-- not fully implemented, not necessary?
