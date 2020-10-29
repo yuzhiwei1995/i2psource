@@ -20,7 +20,7 @@ import net.i2p.router.web.Messages;
 public class ConfigReseedHandler extends FormHandler {
     private final Map<String, String> changes = new HashMap<String, String>();
     private final List<String> removes = new ArrayList<String>();
-    
+
     @Override
     protected void processForm() {
 
@@ -159,6 +159,7 @@ public class ConfigReseedHandler extends FormHandler {
         saveString(Reseeder.PROP_SPROXY_USERNAME, "susername");
         saveString(Reseeder.PROP_SPROXY_PASSWORD, "spassword");
         saveBoolean(Reseeder.PROP_SPROXY_AUTH_ENABLE, "sauth");
+        saveString(Reseeder.PROP_BRIDGE_PLUGGABLE_TRANSPORT, "bridgeline");
         String url = getJettyString("reseedURL");
         if (url != null) {
             url = url.trim().replace("\r\n", ",").replace("\n", ",");
