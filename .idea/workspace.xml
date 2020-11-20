@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3a9e99d-8a9d-4754-8a58-59ee766d66d3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/routerconsole/jsp/js/display.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/routerconsole/jsp/configreseed.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/routerconsole/jsp/configreseed.jsp" afterDir="false" />
     </list>
@@ -26,6 +27,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -59,7 +67,7 @@
       <workItem from="1600703808288" duration="5668000" />
       <workItem from="1603961907489" duration="4667000" />
       <workItem from="1604893667417" duration="2243000" />
-      <workItem from="1605775294927" duration="9174000" />
+      <workItem from="1605775294927" duration="9743000" />
     </task>
     <servers />
   </component>
