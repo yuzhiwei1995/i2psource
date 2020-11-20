@@ -75,7 +75,7 @@ public class ConfigReseedHelper extends HelperBase {
             (mode == 2 && !disabled && c.equals("SOCKS4")) ||
             (mode == 3 && !disabled && c.equals("SOCKS5")) ||
             (mode == 4 && !disabled && c.equals("INTERNAL")) ||
-            (mode == 5 && !disabled && b.equals("I2PBridge")))
+            (mode == 5 && disabled && b.equals("I2PBridge")))
             return CHECKED;
         return "";
     }
