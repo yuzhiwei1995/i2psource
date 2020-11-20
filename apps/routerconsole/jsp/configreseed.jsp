@@ -6,6 +6,25 @@
     <%@include file="css.jsi" %>
     <%=intl.title("config reseeding")%>
     <%@include file="summaryajax.jsi" %>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        function showAndHide() {
+            var rt = $("input[type='radio']:checked").val();
+            if(rt === 'I2PBridge'){
+                $('#i2pbridge').style.display="";
+                $('#https1').style.display="none";
+                $('#https2').style.display="none";
+            } else if(rt === ''){
+                $('#i2pbridge').style.display="";
+                $('#https1').style.display="";
+                $('#https2').style.display="";
+            } else {
+                $('#i2pbridge').style.display="none";
+                $('#https1').style.display="";
+                $('#https2').style.display="";
+            }
+        }
+    </script>
 </head>
 <body>
 <%@include file="summary.jsi" %>
@@ -191,51 +210,51 @@
             <% if (reseedHelper.shouldShowHTTPSProxy()) { %>
             <tr>
                 <td align="right"><b><%=intl._t("Proxy type for HTTPS reseed URLs")%>:</b></td>
-                <td><label><input type="radio" class="optbox" name="pmode" value="" <%=reseedHelper.pmodeChecked(0) %> >
+                <td><label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()" value="" <%=reseedHelper.pmodeChecked(0) %> >
                     <%=intl._t("None")%>
                 </label><br>
-                    <label><input type="radio" class="optbox" name="pmode"
+                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
                                   value="HTTP" <%=reseedHelper.pmodeChecked(1) %> >
                         <%=intl._t("HTTPS")%>
                     </label><br>
-                    <label><input type="radio" class="optbox" name="pmode"
+                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
                                   value="SOCKS4" <%=reseedHelper.pmodeChecked(2) %> >
                         <%=intl._t("SOCKS 4/4a")%>
                     </label><br>
-                    <label><input type="radio" class="optbox" name="pmode"
+                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
                                   value="SOCKS5" <%=reseedHelper.pmodeChecked(3) %> >
                         <%=intl._t("SOCKS 5")%>
                     </label><br>
-                    <label><input type="radio" class="optbox" name="pmode"
+                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
                                   value="INTERNAL" <%=reseedHelper.pmodeChecked(4) %> >
                         <%=intl._t("I2P Outproxy")%>
                     </label>
                     (<%=intl._t("Not for initial reseed. Leave host and port blank.")%>)<br>
-                    <label><input type="radio" class="optbox" name="pmode"
+                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
                                   value="I2PBridge" <%=reseedHelper.pmodeChecked(5) %> >
                         <%=intl._t("I2P Bridge")%>
                     </label>
                     (<%=intl._t("use for obfs4/obfs3 bridge")%>)<br>
                 </td>
             </tr>
-            <% if("HTTPS".equals(request.getParameter("pmode"))){%>
-            <tr>
+
+            <tr id="https1" style="display: none">
                 <td align="right"><b><%=intl._t("HTTPS Proxy Host")%>:</b></td>
                 <td><input name="shost" type="text" value="<jsp:getProperty name="reseedHelper" property="shost" />">
                 </td>
             </tr>
-            <tr>
+            <tr id="https2" style="display: none">
                 <td align="right"><b><%=intl._t("HTTPS Proxy Port")%>:</b></td>
                 <td><input name="sport" type="text" size="5" maxlength="5"
                            value="<jsp:getProperty name="reseedHelper" property="sport" />"></td>
             </tr>
-            <%} else if("I2PBridge".equals(request.getParameter("pmode"))){%>
-            <tr>
+
+            <tr id="i2pbridge" style="display: none">
                 <td align="right"><b><%=intl._t("Bridge Line")%>:</b></td>
                 <td><input name="bridgeline" type="text" maxlength="255"
                            value="<jsp:getProperty name="reseedHelper" property="bridgeline" />"></td>
             </tr>
-            <%} // I2PBridge show%>
+
             <!-- not fully implemented, not necessary?
 <tr><td align="right"><b><%=intl._t("Use HTTPS Proxy Authorization?")%></b></td>
 <td><input type="checkbox" class="optbox" name="sauth" value="true" <jsp:getProperty name="reseedHelper" property="sauth" /> ></td></tr>
