@@ -181,9 +181,8 @@ public class ConfigReseedHandler extends FormHandler {
 
         saveBoolean(Reseeder.PROP_PROXY_ENABLE, "enable");
         String pmode = getJettyString("pmode");
-
-        // pmode=5 means use i2pbridge
-        if("5".equals(pmode)){
+        // pmode=i2pbridge means use i2pbridge
+        if("I2PBridge".equals(pmode)){
             saveString(Reseeder.PROP_BRIDGE_TYPE,"pmode");
             changes.put(Reseeder.PROP_BRIDGE_ENABLE, "true");
             // not use ssl
