@@ -68,13 +68,14 @@ public class ConfigReseedHelper extends HelperBase {
     /** @since 0.9.33 */
     public String pmodeChecked(int mode) {
         String c =  _context.getProperty(Reseeder.PROP_SPROXY_TYPE, "HTTP");
+        String b = _context.getProperty(Reseeder.PROP_BRIDGE_TYPE, "");
         boolean disabled =  !_context.getBooleanProperty(Reseeder.PROP_SPROXY_ENABLE);
         if ((mode == 0 && disabled) ||
             (mode == 1 && !disabled && c.equals("HTTP")) ||
             (mode == 2 && !disabled && c.equals("SOCKS4")) ||
             (mode == 3 && !disabled && c.equals("SOCKS5")) ||
             (mode == 4 && !disabled && c.equals("INTERNAL")) ||
-            (mode == 5 && !disabled && c.equals("I2PBridge")))
+            (mode == 5 && !disabled && b.equals("I2PBridge")))
             return CHECKED;
         return "";
     }
