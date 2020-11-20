@@ -181,9 +181,23 @@ public class ConfigReseedHandler extends FormHandler {
 
         saveBoolean(Reseeder.PROP_PROXY_ENABLE, "enable");
         String pmode = getJettyString("pmode");
-        boolean senable = pmode != null && pmode.length() > 0;
-        changes.put(Reseeder.PROP_SPROXY_ENABLE, Boolean.toString(senable));
-        saveString(Reseeder.PROP_SPROXY_TYPE, "pmode");
+
+        // pmode=5 means use i2pbridge
+        if("5".equals(pmode)){
+            saveString(Reseeder.PROP_BRIDGE_TYPE,"pmode");
+            changes.put(Reseeder.PROP_BRIDGE_ENABLE, "true");
+            // not use ssl
+            changes.put(Reseeder.PROP_SPROXY_ENABLE, "false");
+            removes.add(Reseeder.PROP_SPROXY_TYPE);
+        } else {
+            boolean senable = pmode != null && pmode.length() > 0;
+            changes.put(Reseeder.PROP_SPROXY_ENABLE, Boolean.toString(senable));
+            saveString(Reseeder.PROP_SPROXY_TYPE, "pmode");
+            // not use bridge
+            changes.put(Reseeder.PROP_BRIDGE_ENABLE, "false");
+            removes.add(Reseeder.PROP_BRIDGE_TYPE);
+            removes.add(Reseeder.PROP_BRIDGE_LINE);
+        }
         if (_context.router().saveConfig(changes, removes))
             addFormNotice(_t("Configuration saved successfully."));
         else
