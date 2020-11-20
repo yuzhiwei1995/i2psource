@@ -218,6 +218,7 @@
                     (<%=intl._t("use for obfs4/obfs3 bridge")%>)<br>
                 </td>
             </tr>
+            <% if("HTTPS".equals(request.getParameter("pmode"))){%>
             <tr>
                 <td align="right"><b><%=intl._t("HTTPS Proxy Host")%>:</b></td>
                 <td><input name="shost" type="text" value="<jsp:getProperty name="reseedHelper" property="shost" />">
@@ -228,12 +229,13 @@
                 <td><input name="sport" type="text" size="5" maxlength="5"
                            value="<jsp:getProperty name="reseedHelper" property="sport" />"></td>
             </tr>
-
+            <%} else if("I2PBridge".equals(request.getParameter("pmode"))){%>
             <tr>
                 <td align="right"><b><%=intl._t("Bridge Line")%>:</b></td>
                 <td><input name="bridgeline" type="text" maxlength="255"
                            value="<jsp:getProperty name="reseedHelper" property="bridgeline" />"></td>
             </tr>
+            <%} // I2PBridge show%>
             <!-- not fully implemented, not necessary?
 <tr><td align="right"><b><%=intl._t("Use HTTPS Proxy Authorization?")%></b></td>
 <td><input type="checkbox" class="optbox" name="sauth" value="true" <jsp:getProperty name="reseedHelper" property="sauth" /> ></td></tr>

@@ -14,7 +14,7 @@ import net.i2p.router.web.HelperBase;
 public class ConfigReseedHelper extends HelperBase {
 
     public String getBridgeline(){
-        return _context.getProperty(Reseeder.PROP_BRIDGE_PLUGGABLE_TRANSPORT,"");
+        return _context.getProperty(Reseeder.PROP_BRIDGE_LINE,"");
     }
 
     public String getPort() {

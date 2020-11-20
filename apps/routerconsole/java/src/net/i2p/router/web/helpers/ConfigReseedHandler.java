@@ -159,7 +159,7 @@ public class ConfigReseedHandler extends FormHandler {
         saveString(Reseeder.PROP_SPROXY_USERNAME, "susername");
         saveString(Reseeder.PROP_SPROXY_PASSWORD, "spassword");
         saveBoolean(Reseeder.PROP_SPROXY_AUTH_ENABLE, "sauth");
-        saveString(Reseeder.PROP_BRIDGE_PLUGGABLE_TRANSPORT, "bridgeline");
+        saveString(Reseeder.PROP_BRIDGE_LINE, "bridgeline");
         String url = getJettyString("reseedURL");
         if (url != null) {
             url = url.trim().replace("\r\n", ",").replace("\n", ",");
@@ -173,10 +173,12 @@ public class ConfigReseedHandler extends FormHandler {
         String mode = getJettyString("mode");
         boolean req = "1".equals(mode);
         boolean disabled = "2".equals(mode);
+
         changes.put(Reseeder.PROP_SSL_REQUIRED,
                                            Boolean.toString(req));
         changes.put(Reseeder.PROP_SSL_DISABLE,
                                            Boolean.toString(disabled));
+
         saveBoolean(Reseeder.PROP_PROXY_ENABLE, "enable");
         String pmode = getJettyString("pmode");
         boolean senable = pmode != null && pmode.length() > 0;
