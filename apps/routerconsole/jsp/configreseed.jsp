@@ -208,12 +208,12 @@
                                   value="SOCKS5" <%=reseedHelper.pmodeChecked(3) %> >
                         <%=intl._t("SOCKS 5")%>
                     </label><br>
-                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
+                    <label><input type="radio" class="optbox" name="pmode"
                                   value="INTERNAL" <%=reseedHelper.pmodeChecked(4) %> >
                         <%=intl._t("I2P Outproxy")%>
                     </label>
                     (<%=intl._t("Not for initial reseed. Leave host and port blank.")%>)<br>
-                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
+                    <label><input type="radio" class="optbox" name="pmode"
                                   value="I2PBridge" <%=reseedHelper.pmodeChecked(5) %> >
                         <%=intl._t("I2P Bridge")%>
                     </label>
@@ -221,18 +221,18 @@
                 </td>
             </tr>
 
-            <tr id="https1" style="display: none">
+            <tr id="https1">
                 <td align="right"><b><%=intl._t("HTTPS Proxy Host")%>:</b></td>
                 <td><input name="shost" type="text" value="<jsp:getProperty name="reseedHelper" property="shost" />">
                 </td>
             </tr>
-            <tr id="https2" style="display: none">
+            <tr id="https2">
                 <td align="right"><b><%=intl._t("HTTPS Proxy Port")%>:</b></td>
                 <td><input name="sport" type="text" size="5" maxlength="5"
                            value="<jsp:getProperty name="reseedHelper" property="sport" />"></td>
             </tr>
 
-            <tr id="i2pbridge" style="display: none">
+            <tr id="i2pbridge">
                 <td align="right"><b><%=intl._t("Bridge Line")%>:</b></td>
                 <td><input name="bridgeline" type="text" maxlength="255"
                            value="<jsp:getProperty name="reseedHelper" property="bridgeline" />"></td>
