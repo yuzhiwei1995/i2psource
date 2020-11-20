@@ -8,8 +8,11 @@
     <%@include file="summaryajax.jsi" %>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
-        function showAndHide() {
+
+        $('.optbox').onchange(function showAndHide() {
+
             var rt = $("input[type='radio']:checked").val();
+            alert(rt)
             if(rt === 'I2PBridge'){
                 $('#i2pbridge').style.display="";
                 $('#https1').style.display="none";
@@ -23,7 +26,7 @@
                 $('#https1').style.display="";
                 $('#https2').style.display="";
             }
-        }
+        })
     </script>
 </head>
 <body>
@@ -210,18 +213,18 @@
             <% if (reseedHelper.shouldShowHTTPSProxy()) { %>
             <tr>
                 <td align="right"><b><%=intl._t("Proxy type for HTTPS reseed URLs")%>:</b></td>
-                <td><label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()" value="" <%=reseedHelper.pmodeChecked(0) %> >
+                <td><label><input type="radio" class="optbox" name="pmode" value="" <%=reseedHelper.pmodeChecked(0) %> >
                     <%=intl._t("None")%>
                 </label><br>
-                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
+                    <label><input type="radio" class="optbox" name="pmode"
                                   value="HTTP" <%=reseedHelper.pmodeChecked(1) %> >
                         <%=intl._t("HTTPS")%>
                     </label><br>
-                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
+                    <label><input type="radio" class="optbox" name="pmode"
                                   value="SOCKS4" <%=reseedHelper.pmodeChecked(2) %> >
                         <%=intl._t("SOCKS 4/4a")%>
                     </label><br>
-                    <label><input type="radio" class="optbox" name="pmode" onchange="showAndHide()"
+                    <label><input type="radio" class="optbox" name="pmode"
                                   value="SOCKS5" <%=reseedHelper.pmodeChecked(3) %> >
                         <%=intl._t("SOCKS 5")%>
                     </label><br>
