@@ -15,9 +15,9 @@
                 $('#https1').style.display="none";
                 $('#https2').style.display="none";
             } else if(rt === ''){
-                $('#i2pbridge').style.display="";
-                $('#https1').style.display="";
-                $('#https2').style.display="";
+                $('#i2pbridge').style.display="none";
+                $('#https1').style.display="none";
+                $('#https2').style.display="none";
             } else {
                 $('#i2pbridge').style.display="none";
                 $('#https1').style.display="";
