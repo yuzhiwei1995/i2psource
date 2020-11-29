@@ -10,7 +10,7 @@ $(document).ready(function(){
 function displayOrHide() {
     var rt = $("input[type='radio']:checked").val();
     console.log(rt);
-    if(rt === 'I2PBridge'){
+    if(rt === 'BRIDGE'){
         $('#i2pbridge').show();
         $('#https1').hide();
         $('#https2').hide();
