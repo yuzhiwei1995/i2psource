@@ -313,6 +313,15 @@ public class Reseeder {
                 if (sproxyType == SSLEepGet.ProxyType.INTERNAL) {
                     _sproxyHost = "localhost";
                     _sproxyPort = _context.portMapper().getPort(PortMapper.SVC_HTTP_PROXY, 4444);
+                }
+                // bridge proxy type
+                else if(sproxyType == SSLEepGet.ProxyType.BRIDGE){
+                    String bridgeline = _context.getProperty(PROP_BRIDGE_LINE);
+                    String[] bridgeStr = bridgeline.split(" ");
+                    String hostPort = bridgeStr[1];
+                    String[] ipAndPost = hostPort.split(":");
+                    _sproxyHost = "localhost";
+                    _sproxyPort = 8000;
                 } else {
                     _sproxyHost = _context.getProperty(PROP_SPROXY_HOST);
                     _sproxyPort = _context.getProperty(PROP_SPROXY_PORT, -1);

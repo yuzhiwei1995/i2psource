@@ -214,7 +214,7 @@
                     </label>
                     (<%=intl._t("Not for initial reseed. Leave host and port blank.")%>)<br>
                     <label><input type="radio" class="optbox" name="pmode"
-                                  value="I2PBridge" <%=reseedHelper.pmodeChecked(5) %> >
+                                  value="BRIDGE" <%=reseedHelper.pmodeChecked(5) %> >
                         <%=intl._t("I2P Bridge")%>
                     </label>
                     (<%=intl._t("use for obfs4/obfs3 bridge")%>)<br>

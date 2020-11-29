@@ -182,21 +182,23 @@ public class ConfigReseedHandler extends FormHandler {
         saveBoolean(Reseeder.PROP_PROXY_ENABLE, "enable");
         String pmode = getJettyString("pmode");
         // pmode=i2pbridge means use i2pbridge
-        if("I2PBridge".equals(pmode)){
-            saveString(Reseeder.PROP_BRIDGE_TYPE,"pmode");
+        if("BRIDGE".equals(pmode)){
+            // saveString(Reseeder.PROP_BRIDGE_TYPE,"pmode");
             changes.put(Reseeder.PROP_BRIDGE_ENABLE, "true");
+            changes.put(Reseeder.PROP_SPROXY_HOST, "localhost");
+            changes.put(Reseeder.PROP_SPROXY_PORT, "8000");
             // not use ssl
-            changes.put(Reseeder.PROP_SPROXY_ENABLE, "false");
-            removes.add(Reseeder.PROP_SPROXY_TYPE);
+//            changes.put(Reseeder.PROP_SPROXY_ENABLE, "false");
+//            removes.add(Reseeder.PROP_SPROXY_TYPE);
         } else {
-            boolean senable = pmode != null && pmode.length() > 0;
-            changes.put(Reseeder.PROP_SPROXY_ENABLE, Boolean.toString(senable));
-            saveString(Reseeder.PROP_SPROXY_TYPE, "pmode");
             // not use bridge
             changes.put(Reseeder.PROP_BRIDGE_ENABLE, "false");
-            removes.add(Reseeder.PROP_BRIDGE_TYPE);
             removes.add(Reseeder.PROP_BRIDGE_LINE);
         }
+        boolean senable = pmode != null && pmode.length() > 0;
+        changes.put(Reseeder.PROP_SPROXY_ENABLE, Boolean.toString(senable));
+        saveString(Reseeder.PROP_SPROXY_TYPE, "pmode");
+
         if (_context.router().saveConfig(changes, removes))
             addFormNotice(_t("Configuration saved successfully."));
         else
