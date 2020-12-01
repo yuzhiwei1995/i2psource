@@ -5,6 +5,10 @@ $(document).ready(function(){
         console.log('hello');
         displayOrHide();
     })
+
+    $("#requestBridge").click(function () {
+        console.log('requestBridge...')
+    })
 })
 
 function displayOrHide() {
@@ -24,4 +28,11 @@ function displayOrHide() {
         $('#https1').show();
         $('#https2').show();
     }
+}
+
+
+function requestBridge() {
+    $.get('http://localhost:8080/bridge/getBridge', function (data) {
+        console.log(data);
+    })
 }
