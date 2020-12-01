@@ -234,8 +234,13 @@
 
             <tr id="i2pbridge">
                 <td align="right"><b><%=intl._t("Bridge Line")%>:</b></td>
-                <td><input name="bridgeline" type="text" maxlength="255"
-                           value="<jsp:getProperty name="reseedHelper" property="bridgeline" />"></td>
+                <td>
+                    <input name="bridgeline" type="text" maxlength="255"
+                           value="<jsp:getProperty name="reseedHelper" property="bridgeline" />">
+                    <input type="button" name="action" class="download"
+                           value="获取网桥"/>
+                </td>
+
             </tr>
 
             <!-- not fully implemented, not necessary?
