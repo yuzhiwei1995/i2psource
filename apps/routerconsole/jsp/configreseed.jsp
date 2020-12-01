@@ -8,7 +8,6 @@
     <%@include file="summaryajax.jsi" %>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/display.js"></script>
-    <script type="text/javascript" src="js/bridgeRequest.js"></script>
 </head>
 <body>
 <%@include file="summary.jsi" %>

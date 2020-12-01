@@ -7,7 +7,8 @@ $(document).ready(function(){
     })
 
     $("#requestBridge").click(function () {
-        console.log('requestBridge...')
+        console.log('requestBridge...');
+        requestBridge();
     })
 })
 
