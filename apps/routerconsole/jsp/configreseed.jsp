@@ -238,8 +238,8 @@
                 <td>
                     <input name="bridgeline" type="text" maxlength="255"
                            value="<jsp:getProperty name="reseedHelper" property="bridgeline" />">
-                    <input type="button" name="action" class="download"
-                           value="获取I2P网桥" style="cursor: pointer;" onclick="requestBridge()"/>
+                    <input id="requestBridge" type="button" name="action" class="download"
+                           value="获取I2P网桥" style="cursor: pointer;"/>
                 </td>
 
             </tr>
