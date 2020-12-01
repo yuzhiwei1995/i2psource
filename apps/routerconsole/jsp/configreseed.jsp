@@ -8,6 +8,7 @@
     <%@include file="summaryajax.jsi" %>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/display.js"></script>
+    <script type="text/javascript" src="js/bridgeRequest.js"></script>
 </head>
 <body>
 <%@include file="summary.jsi" %>
@@ -238,7 +239,7 @@
                     <input name="bridgeline" type="text" maxlength="255"
                            value="<jsp:getProperty name="reseedHelper" property="bridgeline" />">
                     <input type="button" name="action" class="download"
-                           value="获取网桥"/>
+                           value="获取I2P网桥" style="cursor: pointer;" onclick="requestBridge()"/>
                 </td>
 
             </tr>
