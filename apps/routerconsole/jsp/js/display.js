@@ -34,8 +34,17 @@ function displayOrHide() {
 
 function requestBridge() {
     console.log('start request');
-    $.getJSON('http://192.168.137.1:8080/bridge/getBridge', function (data) {
-        console.log(data);
-    })
+    // $.getJSON('http://192.168.137.1:8080/bridge/getBridge', function (data) {
+    //     console.log(data);
+    // })
+    $.ajax({
+        url: 'http://bridge.i2pbridge.cn/bridge/getBridge',
+        type: 'GET',
+        dataType: 'JSON',
+        success:function (result) {
+            console.log(result);
+        }
+
+    });
     console.log('end request');
 }
