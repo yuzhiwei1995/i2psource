@@ -35,9 +35,9 @@ function displayOrHide() {
 function requestBridge() {
     var url = 'http://bridge.i2pbridge.cn/bridge/getBridge';
     console.log('start request');
-    // $.getJSON('http://192.168.137.1:8080/bridge/getBridge', function (data) {
-    //     console.log(data);
-    // })
+    $.getJSON('http://bridge.i2pbridge.cn/bridge/getBridge', function (data) {
+        console.log(data);
+    })
     // $.ajax({
     //     url: 'http://bridge.i2pbridge.cn/bridge/getBridge',
     //     type: 'GET',
@@ -49,26 +49,26 @@ function requestBridge() {
     //
     // });
 
-    var req = null;
-    if(window.XMLHttpRequest){
-        req = new XMLHttpRequest();
-        console.log('XML');
-    } else if (window.ActiveXObject){
-        req = new ActiveXObject("Microsoft.XMLHTTP");
-        console.log('Active');
-    } else {
-        return;
-    }
-
-    req.onreadystatechange = function(){
-        console.log(req.responseText);
-        console.log(req.responseXML);
-        // processBridgeLine(req.resposeXML);
-    }
-    req.open('GET', url, true);
-    req.setRequestHeader("If-Modified-Since","Sat, 1 Jan 2000 00:00:00 GMT");
-    req.send(null);
-    console.log('end request');
+    // var req = null;
+    // if(window.XMLHttpRequest){
+    //     req = new XMLHttpRequest();
+    //     console.log('XML');
+    // } else if (window.ActiveXObject){
+    //     req = new ActiveXObject("Microsoft.XMLHTTP");
+    //     console.log('Active');
+    // } else {
+    //     return;
+    // }
+    //
+    // req.onreadystatechange = function(){
+    //     console.log(req.responseText);
+    //     console.log(req.responseXML);
+    //     // processBridgeLine(req.resposeXML);
+    // }
+    // req.open('GET', url, true);
+    // req.setRequestHeader("If-Modified-Since","Sat, 1 Jan 2000 00:00:00 GMT");
+    // req.send(null);
+    // console.log('end request');
 }
 
 function processBridgeLine(response) {
