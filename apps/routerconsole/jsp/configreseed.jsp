@@ -3,8 +3,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+
 <%--    <meta http-equiv="Content-Security-Policy" content="default-src *;img-src 'self' data: base64; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>--%>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://bridge.i2pbridge.cn;connect-src http://bridge.i2pbridge.cn"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://bridge.i2pbridge.cn"/>
     <%@include file="css.jsi" %>
     <%=intl.title("config reseeding")%>
     <%@include file="summaryajax.jsi" %>
