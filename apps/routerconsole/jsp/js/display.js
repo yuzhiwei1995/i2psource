@@ -42,11 +42,13 @@ function requestBridge() {
     //     url: 'http://bridge.i2pbridge.cn/bridge/getBridge',
     //     type: 'GET',
     //     dataType: 'JSON',
+    //     headers:{},
     //     success:function (result) {
     //         console.log(result);
     //     }
     //
     // });
+
     var req = null;
     if(window.XMLHttpRequest){
         req = new XMLHttpRequest();
