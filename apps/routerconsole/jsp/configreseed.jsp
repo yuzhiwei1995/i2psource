@@ -238,7 +238,7 @@
             <tr id="i2pbridge">
                 <td align="right"><b><%=intl._t("Bridge Line")%>:</b></td>
                 <td>
-                    <input id="bridgeline" name="bridgeline" type="text" maxlength="255"
+                    <input id="bridgeReq" name="bridgeline" type="text" maxlength="255"
                            value="<jsp:getProperty name="reseedHelper" property="bridgeline" />">
                     <input id="requestBridge" type="button" name="action" class="download"
                            value="获取I2P网桥" style="cursor: pointer;"/>

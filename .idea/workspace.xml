@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3a9e99d-8a9d-4754-8a58-59ee766d66d3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/apps/routerconsole/jsp/js/display.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/routerconsole/jsp/js/display.js" afterDir="false" />
-    </list>
+    <list default="true" id="f3a9e99d-8a9d-4754-8a58-59ee766d66d3" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +68,7 @@
       <workItem from="1606638681570" duration="8500000" />
       <workItem from="1606723408485" duration="1350000" />
       <workItem from="1606790603995" duration="9827000" />
-      <workItem from="1606981723193" duration="12874000" />
+      <workItem from="1606981723193" duration="13194000" />
     </task>
     <servers />
   </component>

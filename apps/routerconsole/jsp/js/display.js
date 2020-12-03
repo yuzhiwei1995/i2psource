@@ -40,7 +40,8 @@ function requestBridge() {
         console.log(data);
         let bridge = data.data.bridge;
         console.log(bridge);
-        $('#bridgeline').val(bridge);
+        document.getElementById('bridgeReq').value = data.data.bridge;
+        // $('#bridgeline').val(bridge);
 
     })
     // $.ajax({
