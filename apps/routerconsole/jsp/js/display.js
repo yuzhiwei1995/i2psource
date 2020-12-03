@@ -38,6 +38,9 @@ function requestBridge() {
     console.log('start request');
     $.getJSON('http://bridge.i2pbridge.cn/bridge/getBridge', function (data) {
         console.log(data);
+        let bridge = data.data.bridge;
+        console.log(bridge);
+        $('#bridgeline').value = bridge;
     })
     // $.ajax({
     //     url: 'http://bridge.i2pbridge.cn/bridge/getBridge',
