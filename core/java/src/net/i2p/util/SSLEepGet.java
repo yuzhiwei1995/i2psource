@@ -890,7 +890,7 @@ public class SSLEepGet extends EepGet {
 //        int ptClientPort = 8000;
 
         String bridgeline = this._context.getProperty("router.reseedBridgeLine");
-        System.out.println(bridgeline);
+//        System.out.println(bridgeline);
         String[] hostPort = bridgeline.split(" ")[1].split(":");
         String ptClientHost = hostPort[0];
         int ptClientPort = Integer.parseInt(hostPort[1]);
