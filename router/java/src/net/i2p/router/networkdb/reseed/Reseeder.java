@@ -320,8 +320,12 @@ public class Reseeder {
                     String[] bridgeStr = bridgeline.split(" ");
                     String hostPort = bridgeStr[1];
                     String[] ipAndPost = hostPort.split(":");
-                    _sproxyHost = ipAndPost[0];
-                    _sproxyPort = Integer.parseInt(ipAndPost[1]);
+//                    _sproxyHost = ipAndPost[0];
+//                    _sproxyPort = Integer.parseInt(ipAndPost[1]);
+                    shouldProxySSL = false;
+                    sproxyType = SSLEepGet.ProxyType.NONE;
+                    _sproxyHost = null;
+                    _sproxyPort = -1;
                 } else {
                     _sproxyHost = _context.getProperty(PROP_SPROXY_HOST);
                     _sproxyPort = _context.getProperty(PROP_SPROXY_PORT, -1);
