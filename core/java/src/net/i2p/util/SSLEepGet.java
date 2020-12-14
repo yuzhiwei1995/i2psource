@@ -744,7 +744,7 @@ public class SSLEepGet extends EepGet {
 
 
 
-                if (_shouldProxy) {
+                if (_shouldProxy && !"BRIDGE".equals(_proxyType)) {
                     if (_log.shouldLog(Log.DEBUG))
                         _log.debug("Connecting to " + _proxyType + " proxy");
                     switch (_proxyType) {
