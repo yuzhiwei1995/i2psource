@@ -177,6 +177,7 @@ public class SSLEepGet extends EepGet {
         // we're using this constructor:
         // public EepGet(I2PAppContext ctx, boolean shouldProxy, String proxyHost, int proxyPort, int numRetries, long minSize, long maxSize, String outputFile, OutputStream outputStream, String url, boolean allowCaching, String etag, String postData) {
         super(ctx, type != ProxyType.NONE && type != ProxyType.BRIDGE, proxyHost, proxyPort, 0, -1, -1, null, outputStream, url, true, null, null);
+
         if (type != ProxyType.NONE && !_shouldProxy)
             throw new IllegalArgumentException("Bad proxy params");
         _proxyType = type == ProxyType.BRIDGE ? ProxyType.NONE : type;
@@ -218,10 +219,10 @@ public class SSLEepGet extends EepGet {
                      String outputFile, String url, SSLState state) {
         // we're using this constructor:
         // public EepGet(I2PAppContext ctx, boolean shouldProxy, String proxyHost, int proxyPort, int numRetries, long minSize, long maxSize, String outputFile, OutputStream outputStream, String url, boolean allowCaching, String etag, String postData) {
-        super(ctx, type != ProxyType.NONE, proxyHost, proxyPort, 0, -1, -1, outputFile, null, url, true, null, null);
+        super(ctx, type != ProxyType.NONE && type != ProxyType.BRIDGE, proxyHost, proxyPort, 0, -1, -1, outputFile, null, url, true, null, null);
         if (type != ProxyType.NONE && !_shouldProxy)
             throw new IllegalArgumentException("Bad proxy params");
-        _proxyType = type;
+        _proxyType = type == ProxyType.BRIDGE ? ProxyType.NONE : type;
         if (state != null && state.context != null)
             _sslContext = state.context;
         else
