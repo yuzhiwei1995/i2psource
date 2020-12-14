@@ -747,7 +747,8 @@ public class SSLEepGet extends EepGet {
                 }
 
 
-                System.out.println(_proxyType + "--------------------");
+                System.out.println("SSLEepget.java _proxyType: " + _proxyType + " _shouldProxy:" + _shouldProxy);
+                System.out.println("SSLEepget.java host: " + host + ":" + port);
                 if (_shouldProxy) {
                     if (_log.shouldLog(Log.DEBUG))
                         _log.debug("Connecting to " + _proxyType + " proxy");
@@ -769,7 +770,7 @@ public class SSLEepGet extends EepGet {
                         break;
                         // i2pbridge type
                       case BRIDGE:
-                          System.out.println("hello bridge");
+                          System.out.println("SLEepget.java BRIDGE type");
                           bridgeProxyConnect(host, port);
                           break;
 
@@ -779,6 +780,7 @@ public class SSLEepGet extends EepGet {
                         throw new IOException("Unsupported proxy type " + _proxyType);
                     }
 
+                    System.out.println("SSLEepget.java _sslContext: " + _sslContext);
                     // wrap the socket in an SSLSocket
                     if (_sslContext != null)
                         _proxy = _sslContext.getSocketFactory().createSocket(_proxy, host, port, true);
@@ -799,6 +801,7 @@ public class SSLEepGet extends EepGet {
                         _proxy.setSoTimeout(_fetchHeaderTimeout);
                     }
                 }
+
 
                 SSLSocket socket = (SSLSocket) _proxy;
                 I2PSSLSocketFactory.setProtocolsAndCiphers(socket);

@@ -1067,7 +1067,7 @@ public class Reseeder {
             if (ssl) {
                 SSLEepGet sslget;
                 if (_sslState == null) {
-                    if (_shouldProxySSL){
+                    if (_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType){
                         System.out.println("when shouldProxySSL is true 1");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString());
@@ -1079,7 +1079,7 @@ public class Reseeder {
                     // save state for next time
                     _sslState = sslget.getSSLState();
                 } else {
-                    if (_shouldProxySSL){
+                    if (_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType){
                         System.out.println("when shouldProxySSL is true 2");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString(), _sslState);
@@ -1115,6 +1115,7 @@ public class Reseeder {
                 get.addHeader("If-Modified-Since", minLastMod);
             }
             get.addStatusListener(ReseedRunner.this);
+            // start reseed fetch
             if (get.fetch() && get.getStatusCode() == 200)
                 return out;
             out.delete();
