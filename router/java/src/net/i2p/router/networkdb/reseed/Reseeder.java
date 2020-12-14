@@ -353,6 +353,7 @@ public class Reseeder {
             _checker.setStatus(_t("Reseeding"));
             System.out.println("Reseed start");
             int total;
+            System.out.println(_url);
             if (_url != null) {
                 String lc = _url.getPath().toLowerCase(Locale.US);
                 if (lc.endsWith(".su3")) {
