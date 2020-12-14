@@ -353,7 +353,7 @@ public class Reseeder {
             _checker.setStatus(_t("Reseeding"));
             System.out.println("Reseed start");
             int total;
-            System.out.println(_url);
+            System.out.println(_url); // null
             if (_url != null) {
                 String lc = _url.getPath().toLowerCase(Locale.US);
                 if (lc.endsWith(".su3")) {
@@ -800,6 +800,9 @@ public class Reseeder {
                 // don't use context time, as we may be step-changing it
                 // from the server header
                 long startTime = System.currentTimeMillis();
+
+                // get seed from seedURL
+                System.out.println("seedURL: " + seedURL);
                 contentRaw = fetchURL(seedURL);
                 long totalTime = System.currentTimeMillis() - startTime;
                 if (contentRaw == null) {
@@ -981,6 +984,8 @@ public class Reseeder {
 
             URI url = new URI(seedURL + (seedURL.endsWith("/") ? "" : "/") + ROUTERINFO_PREFIX + peer + ROUTERINFO_SUFFIX);
 
+            System.out.println("url: " + url);
+
             byte data[] = readURL(url);
             if (data == null || data.length <= 0)
                 throw new IOException("Failed fetch of " + url);
@@ -992,6 +997,8 @@ public class Reseeder {
             ByteArrayOutputStream baos = new ByteArrayOutputStream(4*1024);
             EepGet get;
             boolean ssl = "https".equals(url.getScheme());
+            System.out.println("SSL: " + ssl);
+            System.out.println("SSL" + _shouldProxySSL);
             if (ssl) {
                 SSLEepGet sslget;
                 if (_sslState == null) {
@@ -999,8 +1006,8 @@ public class Reseeder {
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                                                baos, url.toString());
                     else {
+                        System.out.println("i2pbridge debuggg1");
                         sslget = new SSLEepGet(_context, baos, url.toString());
-                        System.out.println("i2pbridge debuggg");
                     }
 
                     // save state for next time
@@ -1010,6 +1017,7 @@ public class Reseeder {
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                                                baos, url.toString(), _sslState);
                     else {
+                        System.out.println("i2pbridge debuggg2");
                         sslget = new SSLEepGet(_context, baos, url.toString(), _sslState);
 //                        System.out.println("i2pbridge debug");
                     }
@@ -1055,22 +1063,32 @@ public class Reseeder {
             File out = new File(_context.getTempDir(), "reseed-" + _context.random().nextInt() + ".tmp");
             EepGet get;
             boolean ssl = "https".equals(url.getScheme());
+            System.out.println("ssl: [fetchURL]" + ssl);
             if (ssl) {
                 SSLEepGet sslget;
                 if (_sslState == null) {
-                    if (_shouldProxySSL)
+                    if (_shouldProxySSL){
+                        System.out.println("when shouldProxySSL is true 1");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
-                                               out.getPath(), url.toString());
-                    else
+                            out.getPath(), url.toString());
+                    }
+                    else{
+                        System.out.println("when shouldProxySSL is false 1");
                         sslget = new SSLEepGet(_context, out.getPath(), url.toString());
+                    }
                     // save state for next time
                     _sslState = sslget.getSSLState();
                 } else {
-                    if (_shouldProxySSL)
+                    if (_shouldProxySSL){
+                        System.out.println("when shouldProxySSL is true 2");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
-                                               out.getPath(), url.toString(), _sslState);
-                    else
+                            out.getPath(), url.toString(), _sslState);
+                    }
+
+                    else{
+                        System.out.println("when shouldProxySSL is false 2");
                         sslget = new SSLEepGet(_context, out.getPath(), url.toString(), _sslState);
+                    }
                 }
                 get = sslget;
                 if (_shouldProxySSL && _context.getBooleanProperty(PROP_SPROXY_AUTH_ENABLE)) {
