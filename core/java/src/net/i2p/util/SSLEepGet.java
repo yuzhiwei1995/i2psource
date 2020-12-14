@@ -179,7 +179,7 @@ public class SSLEepGet extends EepGet {
         super(ctx, type != ProxyType.NONE && type != ProxyType.BRIDGE, proxyHost, proxyPort, 0, -1, -1, null, outputStream, url, true, null, null);
         if (type != ProxyType.NONE && !_shouldProxy)
             throw new IllegalArgumentException("Bad proxy params");
-        _proxyType = type;
+        _proxyType = type == ProxyType.BRIDGE ? ProxyType.NONE : type;
         if (state != null && state.context != null)
             _sslContext = state.context;
         else
