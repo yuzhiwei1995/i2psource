@@ -994,11 +994,14 @@ public class Reseeder {
             if (ssl) {
                 SSLEepGet sslget;
                 if (_sslState == null) {
-                    if (_shouldProxySSL)
+                    if (_shouldProxySSL  && !"BRIDGE".equals(_sproxyType))
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                                                baos, url.toString());
-                    else
+                    else {
                         sslget = new SSLEepGet(_context, baos, url.toString());
+                        System.out.println("i2pbridge debuggg");
+                    }
+
                     // save state for next time
                     _sslState = sslget.getSSLState();
                 } else {
@@ -1007,7 +1010,7 @@ public class Reseeder {
                                                baos, url.toString(), _sslState);
                     else {
                         sslget = new SSLEepGet(_context, baos, url.toString(), _sslState);
-                        System.out.println("i2pbridge debug");
+//                        System.out.println("i2pbridge debug");
                     }
 
                 }
