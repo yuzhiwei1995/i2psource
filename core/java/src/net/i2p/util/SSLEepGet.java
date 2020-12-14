@@ -176,11 +176,12 @@ public class SSLEepGet extends EepGet {
                      OutputStream outputStream, String url, SSLState state) {
         // we're using this constructor:
         // public EepGet(I2PAppContext ctx, boolean shouldProxy, String proxyHost, int proxyPort, int numRetries, long minSize, long maxSize, String outputFile, OutputStream outputStream, String url, boolean allowCaching, String etag, String postData) {
-        super(ctx, type != ProxyType.NONE && type != ProxyType.BRIDGE, proxyHost, proxyPort, 0, -1, -1, null, outputStream, url, true, null, null);
+        super(ctx, type != ProxyType.NONE, proxyHost, proxyPort, 0, -1, -1, null, outputStream, url, true, null, null);
 
         if (type != ProxyType.NONE && !_shouldProxy)
             throw new IllegalArgumentException("Bad proxy params");
-        _proxyType = type == ProxyType.BRIDGE ? ProxyType.NONE : type;
+//        _proxyType = type == ProxyType.BRIDGE ? ProxyType.NONE : type;
+        _proxyType = type;
         if (state != null && state.context != null)
             _sslContext = state.context;
         else
@@ -219,10 +220,11 @@ public class SSLEepGet extends EepGet {
                      String outputFile, String url, SSLState state) {
         // we're using this constructor:
         // public EepGet(I2PAppContext ctx, boolean shouldProxy, String proxyHost, int proxyPort, int numRetries, long minSize, long maxSize, String outputFile, OutputStream outputStream, String url, boolean allowCaching, String etag, String postData) {
-        super(ctx, type != ProxyType.NONE && type != ProxyType.BRIDGE, proxyHost, proxyPort, 0, -1, -1, outputFile, null, url, true, null, null);
+        super(ctx, type != ProxyType.NONE, proxyHost, proxyPort, 0, -1, -1, outputFile, null, url, true, null, null);
         if (type != ProxyType.NONE && !_shouldProxy)
             throw new IllegalArgumentException("Bad proxy params");
-        _proxyType = type == ProxyType.BRIDGE ? ProxyType.NONE : type;
+//        _proxyType = type == ProxyType.BRIDGE ? ProxyType.NONE : type;
+        _proxyType = type;
         if (state != null && state.context != null)
             _sslContext = state.context;
         else
@@ -244,6 +246,7 @@ public class SSLEepGet extends EepGet {
         // public EepGet(I2PAppContext ctx, boolean shouldProxy, String proxyHost, int proxyPort, int numRetries, long minSize, long maxSize, String outputFile, OutputStream outputStream, String url, boolean allowCaching, String etag, String postData) {
         super(ctx, false, null, -1, 0, -1, -1, outputFile, outputStream, url, true, null, null);
         _proxyType = ProxyType.NONE;
+        System.out.println("NONE SSL");
         if (state != null && state.context != null)
             _sslContext = state.context;
         else
@@ -887,32 +890,32 @@ public class SSLEepGet extends EepGet {
     private void bridgeProxyConnect(String host, int port) throws IOException {
         System.out.println("use i2pbridge to request");
 
-        if (_sslContext != null)
-            _proxy = _sslContext.getSocketFactory().createSocket(host, port);
-        else
-            _proxy = SSLSocketFactory.getDefault().createSocket(host, port);
-        if (_fetchHeaderTimeout > 0) {
-            _proxy.setSoTimeout(_fetchHeaderTimeout);
-        }
+//        if (_sslContext != null)
+//            _proxy = _sslContext.getSocketFactory().createSocket(host, port);
+//        else
+//            _proxy = SSLSocketFactory.getDefault().createSocket(host, port);
+//        if (_fetchHeaderTimeout > 0) {
+//            _proxy.setSoTimeout(_fetchHeaderTimeout);
+//        }
 
 
-//        String ptClientHost = "localhost";
-//        int ptClientPort = 8000;
+        String ptClientHost = "localhost";
+        int ptClientPort = 8000;
 
-//        String bridgeline = this._context.getProperty("router.reseedBridgeLine");
-////        System.out.println(bridgeline);
+        String bridgeline = this._context.getProperty("router.reseedBridgeLine");
+//        System.out.println(bridgeline);
 //        String[] hostPort = bridgeline.split(" ")[1].split(":");
 //        String ptClientHost = hostPort[0];
 //        int ptClientPort = Integer.parseInt(hostPort[1]);
-//
-//        if (_fetchHeaderTimeout > 0) {
-//            _proxy = new Socket();
-//            _proxy.setSoTimeout(_fetchHeaderTimeout);
-//            _proxy.connect(new InetSocketAddress(ptClientHost, ptClientPort), _fetchHeaderTimeout);
-//        } else {
-//            _proxy = new Socket(ptClientHost, ptClientPort);
-//        }
-//        httpProxyConnect(_proxy, host, port);
+
+        if (_fetchHeaderTimeout > 0) {
+            _proxy = new Socket();
+            _proxy.setSoTimeout(_fetchHeaderTimeout);
+            _proxy.connect(new InetSocketAddress(ptClientHost, ptClientPort), _fetchHeaderTimeout);
+        } else {
+            _proxy = new Socket(ptClientHost, ptClientPort);
+        }
+        httpProxyConnect(_proxy, host, port);
     }
 
     /**

@@ -995,7 +995,7 @@ public class Reseeder {
             if (ssl) {
                 SSLEepGet sslget;
                 if (_sslState == null) {
-                    if (_shouldProxySSL  && !"BRIDGE".equals(_sproxyType))
+                    if (_shouldProxySSL  && _sproxyType != SSLEepGet.ProxyType.BRIDGE)
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                                                baos, url.toString());
                     else {
@@ -1006,7 +1006,7 @@ public class Reseeder {
                     // save state for next time
                     _sslState = sslget.getSSLState();
                 } else {
-                    if (_shouldProxySSL && !"BRIDGE".equals(_sproxyType))
+                    if (_shouldProxySSL && _sproxyType != SSLEepGet.ProxyType.BRIDGE)
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                                                baos, url.toString(), _sslState);
                     else {
