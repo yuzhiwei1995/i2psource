@@ -331,7 +331,7 @@ public class Reseeder {
                 _sproxyHost = null;
                 _sproxyPort = -1;
             }
-            _shouldProxySSL = shouldProxySSL && _sproxyHost != null && _sproxyHost.length() > 0 && _sproxyPort > 0 && !sproxyType.equals("BRIDGE");
+            _shouldProxySSL = shouldProxySSL && _sproxyHost != null && _sproxyHost.length() > 0 && _sproxyPort > 0 /*&& !sproxyType.equals("BRIDGE")*/;
             _sproxyType = _shouldProxySSL ? sproxyType : SSLEepGet.ProxyType.NONE;
         }
 
