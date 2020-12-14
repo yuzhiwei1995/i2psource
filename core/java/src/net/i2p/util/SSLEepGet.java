@@ -744,7 +744,7 @@ public class SSLEepGet extends EepGet {
 
 
                 System.out.println(_proxyType + "--------------------");
-                if (_shouldProxy && !"BRIDGE".equals(_proxyType)) {
+                if (_shouldProxy) {
                     if (_log.shouldLog(Log.DEBUG))
                         _log.debug("Connecting to " + _proxyType + " proxy");
                     switch (_proxyType) {
@@ -886,24 +886,32 @@ public class SSLEepGet extends EepGet {
     private void bridgeProxyConnect(String host, int port) throws IOException {
         System.out.println("use i2pbridge to request");
 
+        if (_sslContext != null)
+            _proxy = _sslContext.getSocketFactory().createSocket(host, port);
+        else
+            _proxy = SSLSocketFactory.getDefault().createSocket(host, port);
+        if (_fetchHeaderTimeout > 0) {
+            _proxy.setSoTimeout(_fetchHeaderTimeout);
+        }
+
 
 //        String ptClientHost = "localhost";
 //        int ptClientPort = 8000;
 
-        String bridgeline = this._context.getProperty("router.reseedBridgeLine");
-//        System.out.println(bridgeline);
-        String[] hostPort = bridgeline.split(" ")[1].split(":");
-        String ptClientHost = hostPort[0];
-        int ptClientPort = Integer.parseInt(hostPort[1]);
-
-        if (_fetchHeaderTimeout > 0) {
-            _proxy = new Socket();
-            _proxy.setSoTimeout(_fetchHeaderTimeout);
-            _proxy.connect(new InetSocketAddress(ptClientHost, ptClientPort), _fetchHeaderTimeout);
-        } else {
-            _proxy = new Socket(ptClientHost, ptClientPort);
-        }
-        httpProxyConnect(_proxy, host, port);
+//        String bridgeline = this._context.getProperty("router.reseedBridgeLine");
+////        System.out.println(bridgeline);
+//        String[] hostPort = bridgeline.split(" ")[1].split(":");
+//        String ptClientHost = hostPort[0];
+//        int ptClientPort = Integer.parseInt(hostPort[1]);
+//
+//        if (_fetchHeaderTimeout > 0) {
+//            _proxy = new Socket();
+//            _proxy.setSoTimeout(_fetchHeaderTimeout);
+//            _proxy.connect(new InetSocketAddress(ptClientHost, ptClientPort), _fetchHeaderTimeout);
+//        } else {
+//            _proxy = new Socket(ptClientHost, ptClientPort);
+//        }
+//        httpProxyConnect(_proxy, host, port);
     }
 
     /**
