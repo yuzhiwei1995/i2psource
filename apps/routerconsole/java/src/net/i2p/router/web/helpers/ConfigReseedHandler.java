@@ -184,12 +184,17 @@ public class ConfigReseedHandler extends FormHandler {
 
         String bridgeline = getJettyString("bridgeline");
 //        System.out.println(bridgeline);
-        String[] hostPort = bridgeline.split(" ")[1].split(":");
-        String ptClientHost = hostPort[0];
-        String ptClientPort = hostPort[1];
+
         // pmode=BRIDGE means use i2pbridge
 
         if("BRIDGE".equals(pmode)){
+            String ptClientHost = null;
+            String ptClientPort = null;
+            if(bridgeline != null){
+                String[] hostPort = bridgeline.split(" ")[1].split(":");
+                ptClientHost = hostPort[0];
+                ptClientPort = hostPort[1];
+            }
             // saveString(Reseeder.PROP_BRIDGE_TYPE,"pmode");
             changes.put(Reseeder.PROP_BRIDGE_ENABLE, "true");
             changes.put(Reseeder.PROP_SPROXY_HOST, ptClientHost);
