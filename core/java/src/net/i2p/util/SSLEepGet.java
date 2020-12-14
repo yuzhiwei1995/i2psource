@@ -743,7 +743,7 @@ public class SSLEepGet extends EepGet {
                 }
 
 
-                System.out.println(_proxyType + "--------------------");
+                // System.out.println(_proxyType + "--------------------");
                 if (_shouldProxy && !"BRIDGE".equals(_proxyType)) {
                     if (_log.shouldLog(Log.DEBUG))
                         _log.debug("Connecting to " + _proxyType + " proxy");
@@ -765,6 +765,7 @@ public class SSLEepGet extends EepGet {
                         break;
                         // i2pbridge type
                       case BRIDGE:
+                          System.out.println("hello bridge");
                           bridgeProxyConnect(host, port);
                           break;
 
