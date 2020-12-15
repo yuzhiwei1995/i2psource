@@ -801,9 +801,11 @@ public class Reseeder {
                 // from the server header
                 long startTime = System.currentTimeMillis();
 
+//                System.out.println("seedURL: " + seedURL);
+
                 // get seed from seedURL
-                System.out.println("seedURL: " + seedURL);
                 contentRaw = fetchURL(seedURL);
+
                 long totalTime = System.currentTimeMillis() - startTime;
                 if (contentRaw == null) {
                     // Logging deprecated here since attemptFailed() provides better info
@@ -1063,30 +1065,30 @@ public class Reseeder {
             File out = new File(_context.getTempDir(), "reseed-" + _context.random().nextInt() + ".tmp");
             EepGet get;
             boolean ssl = "https".equals(url.getScheme());
-            System.out.println("ssl: [fetchURL]" + ssl);
+            // System.out.println("ssl: [fetchURL]" + ssl);
             if (ssl) {
                 SSLEepGet sslget;
                 if (_sslState == null) {
                     if (_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType){
-                        System.out.println("when shouldProxySSL is true 1");
+                        // System.out.println("when shouldProxySSL is true 1");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString());
                     }
                     else{
-                        System.out.println("when shouldProxySSL is false 1");
+                        // System.out.println("when shouldProxySSL is false 1");
                         sslget = new SSLEepGet(_context, out.getPath(), url.toString());
                     }
                     // save state for next time
                     _sslState = sslget.getSSLState();
                 } else {
                     if (_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType){
-                        System.out.println("when shouldProxySSL is true 2");
+                        // System.out.println("when shouldProxySSL is true 2");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString(), _sslState);
                     }
 
                     else{
-                        System.out.println("when shouldProxySSL is false 2");
+                        // System.out.println("when shouldProxySSL is false 2");
                         sslget = new SSLEepGet(_context, out.getPath(), url.toString(), _sslState);
                     }
                 }

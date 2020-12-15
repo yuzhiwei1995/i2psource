@@ -1362,7 +1362,7 @@ public class EepGet {
         if (_proxyOut != null) try { _proxyOut.close(); } catch (IOException ioe) {}
         if (_proxy != null) try { _proxy.close(); } catch (IOException ioe) {}
 
-        System.out.println("eepget.java _shouldProxy: " + _shouldProxy);
+        // System.out.println("eepget.java _shouldProxy: " + _shouldProxy);
 
         if (_shouldProxy) {
             _proxy = InternalSocket.getSocket(_proxyHost, _proxyPort);

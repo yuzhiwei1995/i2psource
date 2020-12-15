@@ -242,6 +242,7 @@
                            value="<jsp:getProperty name="reseedHelper" property="bridgeline" />">
                     <input id="requestBridge" type="button" name="action" class="download"
                            value="获取I2P网桥" style="cursor: pointer;"/>
+                    <a href="https://i2pbridge.cn">无法获取网桥？点击网桥获取</a>
                 </td>
 
             </tr>

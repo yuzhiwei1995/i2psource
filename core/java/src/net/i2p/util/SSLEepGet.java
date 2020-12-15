@@ -747,8 +747,8 @@ public class SSLEepGet extends EepGet {
                 }
 
 
-                System.out.println("SSLEepget.java _proxyType: " + _proxyType + " _shouldProxy:" + _shouldProxy);
-                System.out.println("SSLEepget.java host: " + host + ":" + port);
+                // System.out.println("SSLEepget.java _proxyType: " + _proxyType + " _shouldProxy:" + _shouldProxy);
+                // System.out.println("SSLEepget.java host: " + host + ":" + port);
                 if (_shouldProxy) {
                     if (_log.shouldLog(Log.DEBUG))
                         _log.debug("Connecting to " + _proxyType + " proxy");
