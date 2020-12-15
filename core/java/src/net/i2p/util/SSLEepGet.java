@@ -780,7 +780,7 @@ public class SSLEepGet extends EepGet {
                         throw new IOException("Unsupported proxy type " + _proxyType);
                     }
 
-                    System.out.println("SSLEepget.java _sslContext: " + _sslContext);
+                    // System.out.println("SSLEepget.java _sslContext: " + _sslContext);
                     // wrap the socket in an SSLSocket
                     if (_sslContext != null)
                         _proxy = _sslContext.getSocketFactory().createSocket(_proxy, host, port, true);

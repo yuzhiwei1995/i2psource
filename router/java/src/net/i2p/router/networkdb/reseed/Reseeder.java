@@ -353,7 +353,7 @@ public class Reseeder {
             _checker.setStatus(_t("Reseeding"));
             System.out.println("Reseed start");
             int total;
-            System.out.println(_url); // null
+            // System.out.println(_url); // null
             if (_url != null) {
                 String lc = _url.getPath().toLowerCase(Locale.US);
                 if (lc.endsWith(".su3")) {
@@ -999,8 +999,8 @@ public class Reseeder {
             ByteArrayOutputStream baos = new ByteArrayOutputStream(4*1024);
             EepGet get;
             boolean ssl = "https".equals(url.getScheme());
-            System.out.println("SSL: " + ssl);
-            System.out.println("SSL" + _shouldProxySSL);
+//            System.out.println("SSL: " + ssl);
+//            System.out.println("SSL" + _shouldProxySSL);
             if (ssl) {
                 SSLEepGet sslget;
                 if (_sslState == null) {
@@ -1008,7 +1008,7 @@ public class Reseeder {
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                                                baos, url.toString());
                     else {
-                        System.out.println("i2pbridge debuggg1");
+                        // System.out.println("i2pbridge debuggg1");
                         sslget = new SSLEepGet(_context, baos, url.toString());
                     }
 
@@ -1019,9 +1019,8 @@ public class Reseeder {
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                                                baos, url.toString(), _sslState);
                     else {
-                        System.out.println("i2pbridge debuggg2");
+                        // System.out.println("i2pbridge debuggg2");
                         sslget = new SSLEepGet(_context, baos, url.toString(), _sslState);
-//                        System.out.println("i2pbridge debug");
                     }
 
                 }
