@@ -246,7 +246,7 @@ public class SSLEepGet extends EepGet {
         // public EepGet(I2PAppContext ctx, boolean shouldProxy, String proxyHost, int proxyPort, int numRetries, long minSize, long maxSize, String outputFile, OutputStream outputStream, String url, boolean allowCaching, String etag, String postData) {
         super(ctx, false, null, -1, 0, -1, -1, outputFile, outputStream, url, true, null, null);
         _proxyType = ProxyType.NONE;
-        System.out.println("NONE SSL");
+        // System.out.println("NONE SSL");
         if (state != null && state.context != null)
             _sslContext = state.context;
         else
