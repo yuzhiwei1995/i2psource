@@ -1068,25 +1068,30 @@ public class Reseeder {
             if (ssl) {
                 SSLEepGet sslget;
                 if (_sslState == null) {
-                    if ((_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType) || _sproxyType == SSLEepGet.ProxyType.NONE){
+                    if (_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType){
                         // System.out.println("when shouldProxySSL is true 1");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString());
-                    }
-                    else{
+                    } else if(SSLEepGet.ProxyType.NONE == _sproxyType){
+                        System.out.println("hello1");
+                        sslget = new SSLEepGet(_context, SSLEepGet.ProxyType.HTTPS, _sproxyHost, _sproxyPort,
+                            out.getPath(), url.toString());
+                    } else {
                         // System.out.println("when shouldProxySSL is false 1");
                         sslget = new SSLEepGet(_context, out.getPath(), url.toString());
                     }
                     // save state for next time
                     _sslState = sslget.getSSLState();
                 } else {
-                    if ((_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType) || _sproxyType == SSLEepGet.ProxyType.NONE){
+                    if (_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType){
                         // System.out.println("when shouldProxySSL is true 2");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString(), _sslState);
-                    }
-
-                    else{
+                    } else if(SSLEepGet.ProxyType.NONE == _sproxyType){
+                        System.out.println("hello2");
+                        sslget = new SSLEepGet(_context, SSLEepGet.ProxyType.HTTPS, _sproxyHost, _sproxyPort,
+                            out.getPath(), url.toString());
+                    } else {
                         // System.out.println("when shouldProxySSL is false 2");
                         sslget = new SSLEepGet(_context, out.getPath(), url.toString(), _sslState);
                     }
