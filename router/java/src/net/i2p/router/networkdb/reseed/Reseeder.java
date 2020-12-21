@@ -1073,7 +1073,7 @@ public class Reseeder {
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString());
                     } else if(SSLEepGet.ProxyType.NONE == _sproxyType){
-                        System.out.println("hello11");
+//                        System.out.println("hello11");
                         sslget = new SSLEepGet(_context, SSLEepGet.ProxyType.HTTP, "10.22.1.2", 80,
                             out.getPath(), url.toString());
                     } else {
@@ -1088,7 +1088,7 @@ public class Reseeder {
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString(), _sslState);
                     } else if(SSLEepGet.ProxyType.NONE == _sproxyType){
-                        System.out.println("hello22");
+//                        System.out.println("hello22");
                         sslget = new SSLEepGet(_context, SSLEepGet.ProxyType.HTTP, "10.22.1.2", 80,
                             out.getPath(), url.toString());
                     } else {
