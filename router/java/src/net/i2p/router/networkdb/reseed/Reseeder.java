@@ -131,7 +131,7 @@ public class Reseeder {
 
     public static final String PROP_BRIDGE_LINE = "router.reseedBridgeLine";
     public static final String PROP_BRIDGE_ENABLE = "router.reseedBridgeEnable";
-    public static final String PROP_BRIDGE_TYPE = "router.reseedBridgeType";
+//    public static final String PROP_BRIDGE_TYPE = "router.reseedBridgeType";
 
     /** @since 0.8.2 */
     public static final String PROP_PROXY_ENABLE = "router.reseedProxyEnable";
@@ -1068,7 +1068,7 @@ public class Reseeder {
             if (ssl) {
                 SSLEepGet sslget;
                 if (_sslState == null) {
-                    if (_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType){
+                    if ((_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType) || _sproxyType == SSLEepGet.ProxyType.NONE){
                         // System.out.println("when shouldProxySSL is true 1");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString());
@@ -1080,7 +1080,7 @@ public class Reseeder {
                     // save state for next time
                     _sslState = sslget.getSSLState();
                 } else {
-                    if (_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType){
+                    if ((_shouldProxySSL && SSLEepGet.ProxyType.BRIDGE != _sproxyType) || _sproxyType == SSLEepGet.ProxyType.NONE){
                         // System.out.println("when shouldProxySSL is true 2");
                         sslget = new SSLEepGet(_context, _sproxyType, _sproxyHost, _sproxyPort,
                             out.getPath(), url.toString(), _sslState);
